@@ -13,9 +13,9 @@
 
   angular
     .module('app')
-    .controller('HomeController', HomeController);
+    .controller('LoginController', LoginController);
 
-  function HomeController($mdToast) {
+  function LoginController($mdToast) {
     var vm = this;
     vm.toast = $mdToast;
 
@@ -29,11 +29,11 @@
   /**
    * initialize the controller
    */
-  HomeController.prototype._init = function() {
+  LoginController.prototype._init = function() {
     this.pageReady = true;
   };
 
-  HomeController.prototype.next = function(isValid) {
+  LoginController.prototype.next = function(isValid) {
     var vm = this;
     // If the form is not validated, show an error message
     if (!isValid) {
@@ -48,5 +48,5 @@
     vm.selectedIndex += 1;
   };
 
-  HomeController.$inject = ['$mdToast'];
+  LoginController.$inject = ['$mdToast'];
 })();

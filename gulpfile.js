@@ -1,5 +1,5 @@
 /**
-* angular-starter-kit
+* open-municipality
 *
 * @author Andrea SonnY <andreasonny83@gmail.com>
 * @copyright 2016 Andrea SonnY <andreasonny83@gmail.com>
@@ -286,6 +286,7 @@ gulp.task('nodemon', function () {
 gulp.task('start', function () {
   runSequence(
     'clean',
+    'sass',
     'wiredep',
     'nodemon'
   );

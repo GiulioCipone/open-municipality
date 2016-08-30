@@ -1,6 +1,6 @@
 {
-  "name": "angular-starter-kit",
-  "description": "Starter Kit for Angular 1.5+ projects",
+  "name": "open-municipality",
+  "description": "open-municipality",
   "main": "src/index.html",
   "authors": [
     "Andrea SonnY <andreasonny83@gmail.com>"
@@ -11,7 +11,7 @@
     "angularjs",
     "starter-kit"
   ],
-  "homepage": "https://github.com/andreasonny83/angular-starter-kit",
+  "homepage": "https://github.com/andreasonny83/open-municipality",
   "private": true,
   "ignore": [
     "**/.*",

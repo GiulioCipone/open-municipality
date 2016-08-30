@@ -1,5 +1,5 @@
 /**
-* angular-starter-kit
+* open-municipality
 *
 * @author Andrea SonnY <andreasonny83@gmail.com>
 * @copyright 2016 Andrea SonnY <andreasonny83@gmail.com>
@@ -36,6 +36,11 @@
     // routes
     $routeProvider
       .when('/', {
+        templateUrl: 'app/login/login.html',
+        controller: 'LoginController',
+        controllerAs: 'loginCtrl'
+      })
+      .when('/home', {
         templateUrl: 'app/home/home.html',
         controller: 'HomeController',
         controllerAs: 'homeCtrl'

@@ -1,0 +1,86 @@
+<md-content class="md-padding">
+  <h1 class="md-display-2 product-name">Open Municipality</h1>
+
+  <md-card>
+    <form novalidate name="form">
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">
+            Login
+          </span>
+        </md-card-title-text>
+      </md-card-title>
+
+      <md-card-content>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>E-Mail</label>
+          <input ng-model="loginCtrl.user.name"
+                 name="username"
+                 type="text"
+                 tabindex="0"
+                 required>
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Password</label>
+          <input ng-model="loginCtrl.user.pwd"
+                 name="password"
+                 type="password"
+                 required>
+        </md-input-container>
+      </md-card-content>
+
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button
+          ng-click="loginCtrl.next(form.$valid)"
+          class="step1__next">
+          Login
+        </md-button>
+      </md-card-actions>
+    </form>
+  </md-card>
+
+  <md-card>
+    <form novalidate name="form">
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">
+            Register
+          </span>
+        </md-card-title-text>
+      </md-card-title>
+
+      <md-card-content>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Your name</label>
+          <input ng-model="loginCtrl.register.name"
+                 name="username"
+                 type="text"
+                 required>
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Password</label>
+          <input ng-model="loginCtrl.register.pwd"
+                 type="password"
+                 required>
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Confirm Password</label>
+          <input ng-model="loginCtrl.register.repwd"
+                 type="password"
+                 required>
+        </md-input-container>
+      </md-card-content>
+
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button
+          ng-click="loginCtrl.next(form.$valid)"
+          class="step1__next">
+          Register
+        </md-button>
+      </md-card-actions>
+    </form>
+  </md-card>
+</md-content>

@@ -2,7 +2,7 @@
 
 ## Getting Started
 
-To take advantage of the webapp you need to:
+To take advantage of the web-app you need to:
 
 1.  Get a copy of the code.
 2.  Install the dependencies if you don't already have them.
@@ -51,7 +51,7 @@ npm start
 This starts a web server on your local machine from where running the client
  application located inside the `client` folder.
 
-Open a browser pointing to [webserverURL][webserver_url] to render the
+Open a browser pointing to [localhost:3000][webserver_url] to render the
 client web application.
 
 ## License

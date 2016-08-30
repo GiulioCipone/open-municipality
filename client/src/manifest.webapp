@@ -1,8 +1,8 @@
 {
   "version": "1.0.1",
-  "name": "Angular boilerplate",
+  "name": "open municipality",
   "launch_path": "/index.html",
-  "description": "Angular boilerplate",
+  "description": "open municipality",
   "icons": {
     "128": "/images/icon-128x128.png"
   },
@@ -18,8 +18,8 @@
   },
   "locales": {
     "en": {
-      "name": "Angular boilerplate",
-      "description": "Angular boilerplate"
+      "name": "open municipality",
+      "description": "open municipality"
     }
   }
 }
