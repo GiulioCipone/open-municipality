@@ -15,15 +15,52 @@
     .module('app')
     .controller('LoginController', LoginController);
 
-  function LoginController($mdToast) {
+  /**
+   * LoginController
+   *
+   * @param {Object} $http   Angular http service
+   */
+  function LoginController($http) {
     var vm = this;
-    vm.toast = $mdToast;
 
-    $mdToast.show(
-      $mdToast.simple()
-        .textContent('Welcome to Angular Starter Kit!'));
+    vm.login = function(formValid, email, password) {
+      if (!formValid) {
+        return false;
+      }
 
-    this._init();
+      $http({
+        method: 'POST',
+        url: '/api/login',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: {
+          email: email,
+          password: password
+        }
+      });
+    };
+
+    vm.register = function(formValid, email, password, passwordConfirm) {
+      if (!formValid) {
+        return false;
+      }
+
+      $http({
+        method: 'POST',
+        url: '/api/register',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: {
+          email: email,
+          password: password,
+          passwordConfirm: passwordConfirm
+        }
+      });
+    };
+
+    vm._init();
   }
 
   /**
@@ -33,20 +70,5 @@
     this.pageReady = true;
   };
 
-  LoginController.prototype.next = function(isValid) {
-    var vm = this;
-    // If the form is not validated, show an error message
-    if (!isValid) {
-      vm.toast.show(
-        vm.toast.simple()
-          .textContent('You must fill all the required information first.')
-          .hideDelay(0));
-
-      return;
-    }
-
-    vm.selectedIndex += 1;
-  };
-
-  LoginController.$inject = ['$mdToast'];
+  LoginController.$inject = ['$http'];
 })();

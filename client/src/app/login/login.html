@@ -2,7 +2,7 @@
   <h1 class="md-display-2 product-name">Open Municipality</h1>
 
   <md-card>
-    <form novalidate name="form">
+    <form novalidate name="formLogin">
       <md-card-title>
         <md-card-title-text>
           <span class="md-headline">
@@ -14,7 +14,7 @@
       <md-card-content>
         <md-input-container class="md-block" flex-gt-sm>
           <label>E-Mail</label>
-          <input ng-model="loginCtrl.user.name"
+          <input ng-model="user.email"
                  name="username"
                  type="text"
                  tabindex="0"
@@ -23,7 +23,7 @@
 
         <md-input-container class="md-block" flex-gt-sm>
           <label>Password</label>
-          <input ng-model="loginCtrl.user.pwd"
+          <input ng-model="user.pwd"
                  name="password"
                  type="password"
                  required>
@@ -32,7 +32,7 @@
 
       <md-card-actions layout="row" layout-align="end center">
         <md-button
-          ng-click="loginCtrl.next(form.$valid)"
+          ng-click="loginCtrl.login(formLogin.$valid, user.email, user.pwd)"
           class="step1__next">
           Login
         </md-button>
@@ -41,7 +41,7 @@
   </md-card>
 
   <md-card>
-    <form novalidate name="form">
+    <form novalidate name="formRegister">
       <md-card-title>
         <md-card-title-text>
           <span class="md-headline">
@@ -53,7 +53,7 @@
       <md-card-content>
         <md-input-container class="md-block" flex-gt-sm>
           <label>Your name</label>
-          <input ng-model="loginCtrl.register.name"
+          <input ng-model="register.email"
                  name="username"
                  type="text"
                  required>
@@ -61,14 +61,14 @@
 
         <md-input-container class="md-block" flex-gt-sm>
           <label>Password</label>
-          <input ng-model="loginCtrl.register.pwd"
+          <input ng-model="register.pwd"
                  type="password"
                  required>
         </md-input-container>
 
         <md-input-container class="md-block" flex-gt-sm>
           <label>Confirm Password</label>
-          <input ng-model="loginCtrl.register.repwd"
+          <input ng-model="register.repwd"
                  type="password"
                  required>
         </md-input-container>
@@ -76,7 +76,7 @@
 
       <md-card-actions layout="row" layout-align="end center">
         <md-button
-          ng-click="loginCtrl.next(form.$valid)"
+          ng-click="loginCtrl.register(formRegister.$valid, register.email, register.pwd, register.repwd)"
           class="step1__next">
           Register
         </md-button>

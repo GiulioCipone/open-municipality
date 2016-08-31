@@ -314,7 +314,7 @@ gulp.task('build', function(cb) {
  */
 gulp.task('test', function(done) {
   new Server({
-    configFile: path.join(__dirname, '/karma.conf.js'),
+    configFile: path.join(__dirname, 'client/karma.conf.js'),
     singleRun: true
   }, done).start();
 });

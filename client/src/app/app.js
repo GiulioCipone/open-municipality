@@ -26,11 +26,8 @@
   // run.$inject = [];
 
   /**
-   * App routing
-   *
-   * You can leave it here in the config section or take it out
-   * into separate file
-   *
+   * @param  {Object} $routeProvider      Angular routeProvider service
+   * @param  {Object} $locationProvider   Angular locationProvider service
    */
   function config($routeProvider, $locationProvider) {
     // routes

@@ -15,6 +15,11 @@
     .module('app')
     .directive('pageHeader', pageHeader);
 
+  /**
+   * pageHeader
+   *
+   * @return {Object} Angular directive
+   */
   function pageHeader() {
     return {
       restrict: 'E',

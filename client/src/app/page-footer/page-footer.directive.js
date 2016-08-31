@@ -15,6 +15,11 @@
     .module('app')
     .directive('pageFooter', pageFooter);
 
+  /**
+   * pageFooter
+   *
+   * @return {Object} Angular directive
+   */
   function pageFooter() {
     return {
       restrict: 'E',
