@@ -18,7 +18,8 @@
   /**
    * LoginController
    *
-   * @param {Object} $http   Angular http service
+   * @param {Object} $http      Angular http service
+   * @param {Object} $location  Angular $location service
    */
   function LoginController($http, $location) {
     var vm = this;
