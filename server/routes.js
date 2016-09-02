@@ -1,7 +1,6 @@
 var router = require('express').Router();
 var four0four = require('./utils/404')();
 var pkginfo = require('pkginfo')(module);
-var passport = require('passport');
 
 var appName = module.exports.name;
 var appVersion = module.exports.version;

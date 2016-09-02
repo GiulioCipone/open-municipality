@@ -7,7 +7,6 @@ var morgan = require('morgan');
 var favicon = require('serve-favicon');
 
 // Session and cookies middlewares to keep user logged in
-var cookieParser = require('cookie-parser');
 var session = require('express-session');
 
 var app = express();
@@ -24,7 +23,6 @@ app.disable('x-powered-by');
 app.use(favicon(path.join(__dirname, 'favicon.ico')));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-app.use(cookieParser());
 
 // API endpoints
 app.use('/api', require('./routes'));
