@@ -20,7 +20,7 @@
    *
    * @param {Object} $http   Angular http service
    */
-  function LoginController($http) {
+  function LoginController($http, $location) {
     var vm = this;
 
     vm.login = function(formValid, email, password) {
@@ -38,6 +38,13 @@
           email: email,
           password: password
         }
+      }).then(function successCallback(response) {
+        console.log('done');
+        console.log(response);
+        $location.path('/home');
+      }, function errorCallback(response) {
+        console.log('Error');
+        console.log(response);
       });
     };
 
@@ -57,6 +64,13 @@
           password: password,
           passwordConfirm: passwordConfirm
         }
+      }).then(function successCallback(response) {
+        console.log('done');
+        console.log(response);
+        $location.path('/home');
+      }, function errorCallback(response) {
+        console.log('Error');
+        console.log(response);
       });
     };
 
@@ -70,5 +84,5 @@
     this.pageReady = true;
   };
 
-  LoginController.$inject = ['$http'];
+  LoginController.$inject = ['$http', '$location'];
 })();
