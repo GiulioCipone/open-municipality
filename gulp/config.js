@@ -1,8 +1,8 @@
 const path = require('path');
 
-const src = path.join(__dirname, '../client/src');
-const dist = path.join(__dirname, '../client/dist');
-const temp = path.join(__dirname, '../client/.tmp');
+const src = path.join(__dirname, '../src');
+const dist = path.join(__dirname, '../dist');
+const temp = path.join(__dirname, '../.tmp');
 
 const AUTOPREFIXER = [
   'last 3 versions',

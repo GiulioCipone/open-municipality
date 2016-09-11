@@ -1,17 +1,31 @@
 {
   "name": "open-municipality",
   "version": "0.0.0",
-  "main": "server/app.js",
+  "author": "Andrea SonnY <andreasonny83@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andreasonny83/angular-starter-kit"
+  },
+  "bugs": {
+    "url": "https://github.com/andreasonny83/angular-starter-kit/issues"
+  },
+  "engines": {
+    "node": ">=0.12"
+  },
   "scripts": {
     "postinstall": "bower install",
     "test": "gulp test",
-    "start": "gulp start"
+    "update-webdriver": "webdriver-manager update",
+    "preprotractor": "npm run update-webdriver",
+    "protractor": "protractor protractor.conf.js",
+    "build": "gulp build",
+    "serve:dist": "gulp serve:dist",
+    "start": "gulp serve"
   },
   "private": true,
   "license": "MIT",
   "devDependencies": {
     "browser-sync": "^2.13.0",
-    "connect-history-api-fallback": "^1.2.0",
     "del": "^2.2.1",
     "eslint": "^3.0.1",
     "eslint-config-google": "^0.6.0",
@@ -22,7 +36,6 @@
     "gulp-htmlmin": "^2.0.0",
     "gulp-imagemin": "^3.0.1",
     "gulp-load-plugins": "^1.2.4",
-    "gulp-nodemon": "^2.1.0",
     "gulp-sass": "^2.3.2",
     "gulp-size": "^2.1.0",
     "gulp-sourcemaps": "^1.6.0",
@@ -42,13 +55,5 @@
     "protractor": "^3.3.0",
     "run-sequence": "^1.2.2",
     "wiredep": "^4.0.0"
-  },
-  "dependencies": {
-    "body-parser": "^1.15.1",
-    "express": "^4.13.4",
-    "express-session": "^1.14.1",
-    "morgan": "^1.7.0",
-    "pkginfo": "^0.4.0",
-    "serve-favicon": "^2.3.0"
   }
 }

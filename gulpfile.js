@@ -19,7 +19,6 @@ var path = require('path');
 var config = require('./gulp/config.js');
 var Server = require('karma').Server;
 var browserSync = require('browser-sync').create();
-var fallback = require('connect-history-api-fallback');
 
 var args = require('minimist')(process.argv.slice(2));
 
@@ -53,13 +52,7 @@ gulp.task('server:dev', function() {
       baseDir: [config.src, config.tmp],
       routes: {
         '/bower_components': 'bower_components'
-      },
-      middleware: [
-        fallback({
-          index: '/index.html',
-          htmlAcceptHeaders: ['text/html', 'application/xhtml+xml'] // systemjs workaround
-        })
-      ]
+      }
     }
   });
 });
@@ -69,13 +62,7 @@ gulp.task('server:dist', function() {
     port: 8000,
     open: false,
     server: {
-      baseDir: config.dist,
-      middleware: [
-        fallback({
-          index: '/index.html',
-          htmlAcceptHeaders: ['text/html', 'application/xhtml+xml'] // systemjs workaround
-        })
-      ]
+      baseDir: config.dist
     }
   });
 });
@@ -181,7 +168,10 @@ gulp.task('copy:root', function() {
 gulp.task('wiredep', function() {
   return gulp
   .src(config.src + '/index.html')
-  .pipe(wiredep())
+  .pipe(wiredep({
+    cwd: './',
+    ignorePath: '../'
+  }))
   .pipe(gulp.dest(config.src));
 });
 
@@ -263,32 +253,6 @@ gulp.task('serve:dist', function() {
   runSequence(
     'build',
     'server:dist'
-  );
-});
-
-gulp.task('nodemon', function () {
-  $.nodemon({
-    script: 'server/app.js',
-    ext: 'js scss',
-    tasks: function (changedFiles) {
-      var tasks = [];
-      changedFiles.forEach(function (file) {
-        if (path.extname(file) === '.scss' && !~tasks.indexOf('sass')) tasks.push('sass')
-      });
-      return tasks;
-    },
-    env: {
-      'NODE_ENV': 'development'
-    }
-  });
-});
-
-gulp.task('start', function () {
-  runSequence(
-    'clean',
-    'sass',
-    'wiredep',
-    'nodemon'
   );
 });
 
