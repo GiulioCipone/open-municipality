@@ -13,47 +13,57 @@
 
   angular
     .module('app', [
-      'ngRoute',
+      'ui.router',
       'ngAnimate',
-      'ngMaterial'
+      'ngMaterial',
+      'app.main'
     ])
     .config(config)
     .run(run);
 
   // safe dependency injection
   // this prevents minification issues
-  config.$inject = ['$routeProvider', '$locationProvider'];
-  // run.$inject = [];
+  config.$inject = ['$compileProvider', '$stateProvider'];
 
   /**
-   * @param  {Object} $routeProvider      Angular routeProvider service
-   * @param  {Object} $locationProvider   Angular locationProvider service
+   * @param  {Object} $compileProvider  Angular compileProvider service
+   * @param  {Object} $stateProvider    Angular stateProvider service
    */
-  function config($routeProvider, $locationProvider) {
+  function config($compileProvider, $stateProvider) {
+    // disable debug info
+    $compileProvider.debugInfoEnabled(false);
+
     // routes
-    $routeProvider
-      .when('/', {
-        templateUrl: 'app/login/login.html',
-        controller: 'LoginController',
-        controllerAs: 'loginCtrl'
+    // MAIN ABSTRACT STATE, ALWAYS ON
+    $stateProvider
+      .state('main', {
+        abstract: true,
+        url: '',
+        templateUrl: 'app/main.html',
+        controller: 'MainController',
+        controllerAs: 'mainCtrl'
       })
-      .when('/home', {
+      .state('main.home', {
+        url: '/home',
         templateUrl: 'app/home/home.html',
         controller: 'HomeController',
         controllerAs: 'homeCtrl'
       })
-      .otherwise({
-        redirectTo: '/404'
+      .state('main.login', {
+        url: '/login',
+        templateUrl: 'app/login/login.html',
+        controller: 'LoginController',
+        controllerAs: 'loginCtrl'
       });
 
     // use the HTML5 History API
-    $locationProvider.html5Mode(true);
+    // $locationProvider.html5Mode(true);
   }
 
   /**
    * Run once the App is ready
    */
   function run() {
-    // console.log('App ready!');
+    console.log('App ready!');
   }
 })();

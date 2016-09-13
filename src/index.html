@@ -56,6 +56,7 @@
   <link rel="shortcut icon" href="favicon.ico">
   <![endif]-->
 
+  <!-- Google material icons -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
   <!-- build:css(./.tmp) css/main.min.css -->
@@ -73,26 +74,23 @@
   <p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/?locale=en">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
-  <page-header></page-header>
-
-  <!-- Main view for templates -->
-  <div ng-view class="page"></div>
-
-  <page-footer></page-footer>
+  <div ui-view></div>
 
   <!-- build:main(./.tmp) js/main.min.js -->
     <!-- bower:js -->
     <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/angular-messages/angular-messages.js"></script>
     <script src="bower_components/angular-material/angular-material.js"></script>
     <script src="bower_components/firebase/firebase.js"></script>
     <script src="bower_components/angularfire/dist/angularfire.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <!-- endbower -->
 
     <script src="/app/app.js"></script>
+
+    <script src="/app/app.main.js"></script>
 
     <script src="/app/page-header/page-header.directive.js"></script>
     <script src="/app/page-footer/page-footer.directive.js"></script>

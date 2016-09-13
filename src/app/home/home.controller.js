@@ -18,7 +18,9 @@
   /**
    * HomeController
    */
-  function HomeController() {
+  function HomeController($scope) {
+    $scope.test = "hello";
+
     var vm = this;
 
     vm.login = function() {
@@ -33,7 +35,8 @@
    */
   HomeController.prototype._init = function() {
     this.pageReady = true;
+    console.log('HomeController Ready!');
   };
 
-  // HomeController.$inject = [];
+  HomeController.$inject = ['$scope'];
 })();

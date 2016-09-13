@@ -8,20 +8,24 @@
 *
 * @license MIT  https://andreasonny.mit-license.org/@2016/
 */
+
 (function() {
   'use strict';
 
-  var pageHeader = {
-    templateUrl: 'app/page-header/page-header.html',
-    bindings: {
-      page: '<'
-    },
-    controller: function() {
-      console.log('Page:', this.page);
-    }
-  }
+  angular
+    .module('app.main', [])
+    .constant('appConst', {
+      apiURL: ''
+    });
 
   angular
     .module('app')
-    .component('pageHeader', pageHeader);
+    .controller('MainController', function() {
+      var vm = this;
+
+      vm.page = null;
+
+      vm.page = 'login';
+      console.log('MainController Ready!');
+    });
 })();

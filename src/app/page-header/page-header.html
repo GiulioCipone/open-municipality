@@ -1,6 +1,22 @@
 <md-toolbar>
   <div class="md-toolbar-tools">
+    <md-button class="md-icon-button"
+               aria-label="Log in"
+               ng-href="#/home"
+               ng-if="mainCtrl.page.login">
+       <md-icon aria-label="back">arrow_back</md-icon>
+     </md-button>
+
     <h2>
       <span>Open Municipality</span>
     </h2>
+
+    <span flex></span>
+
+     <md-button aria-label="Log in"
+                ng-href="#/login"
+                ui-sref-active="active">
+        Log In
+      </md-button>
+  </div>
 </md-toolbar>
