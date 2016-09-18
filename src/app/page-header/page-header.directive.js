@@ -14,10 +14,10 @@
   var pageHeader = {
     templateUrl: 'app/page-header/page-header.html',
     bindings: {
-      page: '<'
+      page: '='
     },
-    controller: function() {
-      console.log('Page:', this.page);
+    controller: function(pageService) {
+      console.log('Allo header');
     }
   }
 

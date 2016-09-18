@@ -11,32 +11,24 @@
 (function() {
   'use strict';
 
-  angular
-    .module('app')
-    .controller('HomeController', HomeController);
-
   /**
    * HomeController
    */
-  function HomeController($scope) {
-    $scope.test = "hello";
-
+  function HomeController() {
     var vm = this;
 
-    vm.login = function() {
+    vm._init = function() {
+      this.pageReady = true;
 
-    };
+      console.log('HomeController Ready!');
+    }
 
     vm._init();
   }
 
-  /**
-   * initialize the controller
-   */
-  HomeController.prototype._init = function() {
-    this.pageReady = true;
-    console.log('HomeController Ready!');
-  };
+  angular
+    .module('app')
+    .controller('HomeController', HomeController);
 
-  HomeController.$inject = ['$scope'];
+  HomeController.$inject = [];
 })();

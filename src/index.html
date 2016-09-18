@@ -90,11 +90,12 @@
 
     <script src="/app/app.js"></script>
 
-    <script src="/app/app.main.js"></script>
+    <script src="/app/services/page.service.js"></script>
 
     <script src="/app/page-header/page-header.directive.js"></script>
     <script src="/app/page-footer/page-footer.directive.js"></script>
 
+    <script src="/app/main/main.controller.js"></script>
     <script src="/app/login/login.controller.js"></script>
     <script src="/app/home/home.controller.js"></script>
 
@@ -116,6 +117,16 @@
   <!-- End Google Analytics -->
 
   <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyADlNqki2TR46QBYRjD5wpRrc3eFVXB3Hw",
+      authDomain: "open-municipality.firebaseapp.com",
+      databaseURL: "https://open-municipality.firebaseio.com",
+      storageBucket: "open-municipality.appspot.com",
+      messagingSenderId: "597188393440"
+    };
+    firebase.initializeApp(config);
+  
     angular.element(document).ready(function() {
       angular.bootstrap(document, ['app']);
     });

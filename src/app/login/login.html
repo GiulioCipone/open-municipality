@@ -31,10 +31,55 @@
       </md-card-content>
 
       <md-card-actions layout="row" layout-align="end center">
-        <md-button
-          ng-click="loginCtrl.login(formLogin.$valid, user.email, user.pwd)"
-          class="step1__next">
+        <md-button ng-click="loginCtrl.login(formLogin.$valid, user.email, user.pwd)"
+                   ng-disabled="!formLogin.$valid">
           Login
+        </md-button>
+      </md-card-actions>
+    </form>
+  </md-card>
+
+  <md-card>
+    <form novalidate name="formRegister">
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">
+            Register
+          </span>
+        </md-card-title-text>
+      </md-card-title>
+
+      <md-card-content>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>E-Mail</label>
+          <input ng-model="reg.email"
+                 name="username"
+                 type="text"
+                 tabindex="0"
+                 required>
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Password</label>
+          <input ng-model="reg.pwd"
+                 name="password"
+                 type="password"
+                 required>
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Password Confirm</label>
+          <input ng-model="reg.pwdConfirm"
+                 name="password-confirm"
+                 type="password"
+                 required>
+        </md-input-container>
+      </md-card-content>
+
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button ng-click="loginCtrl.register(formRegister.$valid, reg.email, reg.pwd, reg.pwdConfirm)"
+                   ng-disabled="!formRegister.$valid">
+          Register
         </md-button>
       </md-card-actions>
     </form>

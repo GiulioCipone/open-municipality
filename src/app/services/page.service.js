@@ -11,19 +11,25 @@
 (function() {
   'use strict';
 
-  /**
-   * pageFooter
-   *
-   * @return {Object} Angular directive
-   */
-  function pageFooter() {
+  angular
+    .module('pageService', [])
+    .factory('pageService', PageService);
+
+  function PageService() {
+    var vm = this;
+    vm.page = '';
+
+    function _getPage() {
+      return vm.page;
+    }
+
+    function _setPage(val) {
+      vm.page = val;
+    }
+
     return {
-      restrict: 'E',
-      templateUrl: 'app/page-footer/page-footer.html'
+      getPage: _getPage,
+      setPage: _setPage
     };
   }
-
-  angular
-    .module('app')
-    .directive('pageFooter', pageFooter);
 })();

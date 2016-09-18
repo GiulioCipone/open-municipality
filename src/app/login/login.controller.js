@@ -11,42 +11,31 @@
 (function() {
   'use strict';
 
-  angular
-    .module('app')
-    .controller('LoginController', LoginController);
-
   /**
    * LoginController
-   *
-   * @param {Object} $http      Angular http service
-   * @param {Object} $location  Angular $location service
    */
-  function LoginController($http, $location) {
+  function LoginController($state, $firebaseAuth, $mdToast) {
     var vm = this;
+
+    vm.authObj = $firebaseAuth();
 
     vm.login = function(formValid, email, password) {
       if (!formValid) {
         return false;
       }
 
-      $http({
-        method: 'POST',
-        url: '/api/login',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        data: {
-          email: email,
-          password: password
-        }
-      }).then(function successCallback(response) {
-        console.log('done');
-        console.log(response);
-        $location.path('/home');
-      }, function errorCallback(response) {
-        console.log('Error');
-        console.log(response);
-      });
+      vm
+        .authObj
+        .$signInWithEmailAndPassword(email, password)
+        .then(function(firebaseUser) {
+          $state.go('main.home');
+          $mdToast.show(
+            $mdToast.simple().textContent('Welcome back ' + firebaseUser.email));
+        })
+        .catch(function(error) {
+          $mdToast.show(
+            $mdToast.simple().textContent('Authentication failed: ' + error));
+        });
     };
 
     vm.register = function(formValid, email, password, passwordConfirm) {
@@ -54,36 +43,33 @@
         return false;
       }
 
-      $http({
-        method: 'POST',
-        url: '/api/register',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        data: {
-          email: email,
-          password: password,
-          passwordConfirm: passwordConfirm
-        }
-      }).then(function successCallback(response) {
-        console.log('done');
-        console.log(response);
-        $location.path('/home');
-      }, function errorCallback(response) {
-        console.log('Error');
-        console.log(response);
-      });
+      if (password !== passwordConfirm) {
+        $mdToast.show(
+          $mdToast.simple().textContent('Registration failed: The 2 passwords should match'));
+        return false;
+      }
+
+      vm.authObj.$createUserWithEmailAndPassword(email, password)
+        .then(function(firebaseUser) {
+          $state.go('main.home');
+          $mdToast.show(
+            $mdToast.simple().textContent('The new user has been successfully created'));
+        }).catch(function(error) {
+          $mdToast.show(
+            $mdToast.simple().textContent('Error: ' + error));
+        });
+    };
+
+    vm._init = function() {
+      this.pageReady = true;
     };
 
     vm._init();
   }
 
-  /**
-   * initialize the controller
-   */
-  LoginController.prototype._init = function() {
-    this.pageReady = true;
-  };
+  angular
+    .module('app')
+    .controller('LoginController', LoginController);
 
-  LoginController.$inject = ['$http', '$location'];
+  LoginController.$inject = ['$state', '$firebaseAuth', '$mdToast'];
 })();

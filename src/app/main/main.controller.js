@@ -12,18 +12,20 @@
   'use strict';
 
   /**
-   * pageFooter
+   * LoginController
    *
-   * @return {Object} Angular directive
+   * @param {Object} $rootScope  Angular rootScope service
    */
-  function pageFooter() {
-    return {
-      restrict: 'E',
-      templateUrl: 'app/page-footer/page-footer.html'
-    };
+  function MainController($rootScope) {
+    var vm = this;
+
+    vm.page = {};
+    vm.page.name = $rootScope.page ? $rootScope.page.name : 'no';
   }
 
   angular
     .module('app')
-    .directive('pageFooter', pageFooter);
+    .controller('MainController', MainController);
+
+  MainController.$inject = ['$rootScope'];
 })();

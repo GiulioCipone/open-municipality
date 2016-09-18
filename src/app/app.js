@@ -13,23 +13,28 @@
 
   angular
     .module('app', [
+      // Services
       'ui.router',
       'ngAnimate',
       'ngMaterial',
-      'app.main'
+      'firebase',
+      'pageService'
+      // Modules
+      // coming soon...
     ])
     .config(config)
     .run(run);
 
   // safe dependency injection
   // this prevents minification issues
-  config.$inject = ['$compileProvider', '$stateProvider'];
+  config.$inject = ['$compileProvider', '$stateProvider', '$locationProvider'];
+  run.$inject = ['$rootScope', 'pageService'];
 
   /**
    * @param  {Object} $compileProvider  Angular compileProvider service
    * @param  {Object} $stateProvider    Angular stateProvider service
    */
-  function config($compileProvider, $stateProvider) {
+  function config($compileProvider, $stateProvider, $locationProvider) {
     // disable debug info
     $compileProvider.debugInfoEnabled(false);
 
@@ -39,12 +44,12 @@
       .state('main', {
         abstract: true,
         url: '',
-        templateUrl: 'app/main.html',
+        templateUrl: 'app/main/main.html',
         controller: 'MainController',
         controllerAs: 'mainCtrl'
       })
       .state('main.home', {
-        url: '/home',
+        url: '/',
         templateUrl: 'app/home/home.html',
         controller: 'HomeController',
         controllerAs: 'homeCtrl'
@@ -63,7 +68,24 @@
   /**
    * Run once the App is ready
    */
-  function run() {
+  function run($rootScope, pageService) {
     console.log('App ready!');
+
+    $rootScope.$on('$stateChangeStart', function(e, toState) {
+      var pageName = $rootScope.page && $rootScope.page.name ?
+                     $rootScope.page.name : null;
+
+      pageService.setPage(toState.name);
+
+      if (!$rootScope.page) {
+        $rootScope.page = {};
+      }
+
+      $rootScope.page.name = toState.name;
+      // $rootScope.$apply();
+
+      console.log(pageName);
+      // console.log(pageService.getPage());
+    });
   }
 })();
