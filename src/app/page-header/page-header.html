@@ -1,20 +1,22 @@
 <md-toolbar>
+  <!-- ng-if="$ctrl.page.login" -->
   <div class="md-toolbar-tools">
     <md-button class="md-icon-button"
                aria-label="Log in"
-               ui-sref="main.home"
-               ng-if="$ctrl.page.login">
+               ng-if="$ctrl.state.current.name !== 'app.home'"
+               ui-sref="app.home">
        <md-icon aria-label="back">arrow_back</md-icon>
      </md-button>
 
     <h2>
-      <span>Open Municipality: {{$ctrl.page}}</span>
+      <span>Open Municipality</span>
+      <span>{{$ctrl.current.name}}</span>
     </h2>
 
     <span flex></span>
-
      <md-button aria-label="Log in"
-                ui-sref="main.login"
+                ui-sref="app.login"
+                ng-if="$ctrl.state.current.name !== 'app.login'"
                 ui-sref-active="active">
         Log In
       </md-button>

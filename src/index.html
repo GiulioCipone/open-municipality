@@ -74,7 +74,12 @@
   <p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/?locale=en">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
+  <page-header></page-header>
+
+  <!-- Main wrapper for templates -->
   <div ui-view></div>
+
+  <page-footer></page-footer>
 
   <!-- build:main(./.tmp) js/main.min.js -->
     <!-- bower:js -->
@@ -95,7 +100,6 @@
     <script src="/app/page-header/page-header.directive.js"></script>
     <script src="/app/page-footer/page-footer.directive.js"></script>
 
-    <script src="/app/main/main.controller.js"></script>
     <script src="/app/login/login.controller.js"></script>
     <script src="/app/home/home.controller.js"></script>
 
@@ -126,7 +130,7 @@
       messagingSenderId: "597188393440"
     };
     firebase.initializeApp(config);
-  
+
     angular.element(document).ready(function() {
       angular.bootstrap(document, ['app']);
     });

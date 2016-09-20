@@ -28,7 +28,7 @@
         .authObj
         .$signInWithEmailAndPassword(email, password)
         .then(function(firebaseUser) {
-          $state.go('main.home');
+          $state.go('app.home');
           $mdToast.show(
             $mdToast.simple().textContent('Welcome back ' + firebaseUser.email));
         })
@@ -51,7 +51,7 @@
 
       vm.authObj.$createUserWithEmailAndPassword(email, password)
         .then(function(firebaseUser) {
-          $state.go('main.home');
+          $state.go('app.home');
           $mdToast.show(
             $mdToast.simple().textContent('The new user has been successfully created'));
         }).catch(function(error) {
