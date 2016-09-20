@@ -13,12 +13,13 @@
 
   angular
     .module('app', [
-      // Services
       'ui.router',
       'ngAnimate',
       'ngMaterial',
       'firebase',
-      'pageService'
+      'ngAnimate',
+      // Services
+      'authService'
       // Modules
       // coming soon...
     ])
@@ -27,7 +28,13 @@
 
   // safe dependency injection
   // this prevents minification issues
-  config.$inject = ['$compileProvider', '$stateProvider', '$locationProvider', '$urlRouterProvider'];
+  config.$inject = [
+    '$compileProvider',
+    '$stateProvider',
+    '$locationProvider',
+    '$urlRouterProvider'
+  ];
+
   run.$inject = ['$rootScope'];
 
   /**
@@ -43,7 +50,7 @@
     $stateProvider
       .state('app', {
         abstract: true,
-        template: '<div ui-view />'
+        template: '<div ui-view class="page" />'
       })
       .state('app.home', {
         url: '/home',

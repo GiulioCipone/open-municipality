@@ -12,24 +12,13 @@
   'use strict';
 
   angular
-    .module('pageService', [])
-    .factory('pageService', PageService);
+    .module('authService', [])
+    .factory('authService', AuthService);
 
-  function PageService() {
+  function AuthService() {
     var vm = this;
-    vm.page = '';
-
-    function _getPage() {
-      return vm.page;
-    }
-
-    function _setPage(val) {
-      vm.page = val;
-    }
 
     return {
-      getPage: _getPage,
-      setPage: _setPage
     };
   }
 })();
